@@ -9,9 +9,9 @@ app.get('/', function (req, res) {
     res.send(JSON.stringify({ Hello: 'World' }))
 })
 
-app.post('/register', function (req, res) {
+app.post('/register', async (req, res) => {
     try {
-        sendRegistrationEmail(req, res)
+        await sendRegistrationEmail(req, res)
         res.send('registration successfull posted')
     } catch (error) {
         res.send(error)
