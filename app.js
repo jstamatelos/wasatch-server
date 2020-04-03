@@ -10,17 +10,14 @@ app.get('/', function (req, res) {
 })
 
 app.post('/register', function (req, res) {
-    // call to send grid with body details
-    console.log('Request incoming: ', req)
-    sendRegistrationEmail(req, res)
-})
-
-app.post('/test', function (req, res) {
-    // call to send grid with body details
-    res.send(JSON.stringify({ Hello: 'POST' }))
-
+    try {
+        sendRegistrationEmail(req, res)
+        res.send('registration successfull posted')
+    } catch (error) {
+        res.send(error)
+    }
 })
 
 app.listen(port, function () {
-    console.log(`Example app listening on port !`)
+    console.log(`Up and running on port: ${port}`)
 })
