@@ -12,8 +12,14 @@ app.get('/', function (req, res) {
 app.post('/register', function (req, res) {
     // call to send grid with body details
     sendRegistrationEmail(req, res)
+})
+
+app.post('/test', function (req, res) {
+    // call to send grid with body details
+    res.send(JSON.stringify({ Hello: 'POST' }))
 
 })
+
 app.listen(port, function () {
     console.log(`Example app listening on port !`)
 })
