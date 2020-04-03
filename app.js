@@ -11,7 +11,7 @@ app.get('/', function (req, res) {
 
 app.post('/register', function (req, res) {
     // call to send grid with body details
-    await sendRegistrationEmail(req, res)
+    sendRegistrationEmail(req, res)
 
 })
 app.listen(port, function () {
