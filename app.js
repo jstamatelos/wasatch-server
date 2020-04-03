@@ -1,9 +1,11 @@
 const express = require('express')
 const { sendRegistrationEmail } = require('./routes/sendMail')
-
+const parser = require('body-parser')
 const port = process.env.PORT || 3000
 
 const app = express()
+app.use(express.json())
+app.use(parser)
 
 app.get('/', function (req, res) {
     res.send(JSON.stringify({ Hello: 'World' }))
@@ -11,7 +13,7 @@ app.get('/', function (req, res) {
 
 app.post('/register', function (req, res) {
     // call to send grid with body details
-    console.log('Request incoming: ', req)
+    console.log('Request incoming: ', req.body)
     sendRegistrationEmail(req, res)
 })
 
