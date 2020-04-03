@@ -11,6 +11,7 @@ app.get('/', function (req, res) {
 
 app.post('/register', function (req, res) {
     // call to send grid with body details
+    console.log('Request incoming: ', req)
     sendRegistrationEmail(req, res)
 })
 
