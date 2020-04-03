@@ -22,7 +22,6 @@ const sendRegistrationEmail = async (req, res) => {
         await schema.validateAsync(req.body)
     } catch (error) {
         const { output } = boom.badData()
-        console.error(output)
         res.send(output)
     }
     const msg = {
