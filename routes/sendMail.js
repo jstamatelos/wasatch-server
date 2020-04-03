@@ -3,9 +3,9 @@ sendgrid.setApiKey(process.env.SEND_GRID_API_KEY)
 const sender = process.env.SENDER
 const subject = process.env.SUBJECT
 const staff = process.env.WASATCH_STAFF
-const staff0 = staff.split('|')[0]
-const staff1 = staff.split('|')[1]
-const staff2 = staff.split('|')[2]
+// const staff0 = staff.split('|')[0]
+// const staff1 = staff.split('|')[1]
+// const staff2 = staff.split('|')[2]
 
 const joi = require('@hapi/joi')
 const boom = require('@hapi/boom')
@@ -26,13 +26,7 @@ const sendRegistrationEmail = async (req, res) => {
         res.send(output)
     }
     const msg = {
-        to: [{
-            email: staff0
-        },{
-            email: staff1
-        },{
-            email: staff2
-        }],
+        to: staff,
         from: sender,
         subject: subject,
         html: `Name: ${firstName} ${lastName}, ${registrantEmail} wants to register for Wasatch LC`
