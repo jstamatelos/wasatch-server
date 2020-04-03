@@ -1,6 +1,6 @@
 const express = require('express')
 const port = process.env.PORT || 3000
-const pino = require('./logger')
+const pino = require('express-pino-logger')()
 const { sendRegistrationEmail } = require('./routes/sendMail')
 
 const app = express()
