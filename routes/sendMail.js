@@ -13,7 +13,25 @@ const boom = require('@hapi/boom')
 const schema = joi.object({
     firstName: joi.string().required(),
     lastName: joi.string().required(),
-    registrantEmail: joi.string().email().required()
+    registrantEmail: joi.string().email().required(),
+    tournamemt: joi.string().required(),
+    playerPhoneNumber: joi.string(),
+    playerAddressStreet: joi.string().required(),
+    playerAddressCity: joi.string().required(),
+    playerAddressZip: joi.string().required(),
+    usLacrosseNumber: joi.string().required(),
+    playerPostion: joi.string().required(),
+    teamSelection: joi.string().required(),
+    graduationYear: joi.string().required(),
+    experianceLevel: joi.string().required(),
+    highSchool: joi.string().required(),
+    parentFirstName: joi.string().required(),
+    parentLastName: joi.string().required(),
+    parentEmail: joi.string().email().required(),
+    parentPhoneNumber: joi.string().optional(),
+    parentAddressStreet: joi.string().optional(),
+    parentAddressCity: joi.string().optional(),
+    parentAddressZip: joi.string().optional()
 })
 
 const sendRegistrationEmail = async (req, res) => {

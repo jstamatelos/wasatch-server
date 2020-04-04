@@ -26,6 +26,12 @@ app.post('/register', async (req, res) => {
     req.log.info('register() :: attempt to create registration was succesfull')
 })
 
+app.post('/register/test', async (req, res) => {
+    req.log.info('register() :: attempting to create registration...')
+    res.send(req.body)
+    req.log.info('register() :: attempt to create registration was succesfull')
+})
+
 app.listen(port, function () {
     console.log(`Up and running on port: ${port}`)
 })
