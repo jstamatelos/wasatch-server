@@ -1,4 +1,6 @@
 const express = require('express')
+const cors = require('cors')
+
 const port = process.env.PORT || 3000
 const pino = require('express-pino-logger')()
 const { sendRegistrationEmail } = require('./routes/sendMail')
@@ -6,6 +8,7 @@ const { sendRegistrationEmail } = require('./routes/sendMail')
 const app = express()
 app.use(express.json())
 app.use(pino)
+app.use(cors())
 
 app.get('/', function (req, res) {
     res.send(JSON.stringify({ Status: 'Running' }))
