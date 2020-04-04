@@ -43,3 +43,18 @@ test('sendRegistrationEmail() validation passes', async (assert) => {
     
     assert.end()
 })
+
+test('buildBody() validation passes', async (assert) => {
+    const { buildBody } = require(modulePath)
+    const req = {
+        body: {
+            firstName: 'first',
+            lastName: 'last',
+            registrantEmail: 'email@test.com'
+        }
+    }
+    const actual = buildBody(req)
+    assert.ok(actual)
+    
+    assert.end()
+})
