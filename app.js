@@ -17,6 +17,8 @@ app.get('/', function (req, res) {
 app.post('/register', async (req, res) => {
     req.log.info('register() :: attempting to create registration...')
     try {
+        req.log.info('register request: ', req.body)
+
         await sendRegistrationEmail(req, res)
         res.send('registration successfull posted')
     } catch (error) {
