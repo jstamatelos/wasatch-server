@@ -7,32 +7,32 @@ const staff = 'swdeveloper@jarrydstamatelos.com'
 // const staff1 = staff.split('|')[1]
 // const staff2 = staff.split('|')[2]
 
-const joi = require('@hapi/joi')
-// const boom = require('@hapi/boom')
+// const joi = require('@hapi/joi')
+// // const boom = require('@hapi/boom')
 
-const schema = joi.object({
-  firstName: joi.string().required(),
-  lastName: joi.string().required(),
-  registrantEmail: joi.string().email().required(),
-  tournament: joi.string().required(),
-  playerPhoneNumber: joi.string(),
-  playerAddressStreet: joi.string().required(),
-  playerAddressCity: joi.string().required(),
-  playerAddressZip: joi.string().required(),
-  usLacrosseNumber: joi.string().required(),
-  playerPostion: joi.string().required(),
-  teamSelection: joi.string().required(),
-  graduationYear: joi.string().required(),
-  expLevel: joi.string().required(),
-  highSchool: joi.string().required(),
-  parentFirstName: joi.string().required(),
-  parentLastName: joi.string().required(),
-  parentEmail: joi.string().email().required(),
-  parentPhoneNumber: joi.string().required(),
-  parentAddressStreet: joi.string(),
-  parentAddressCity: joi.string(),
-  parentAddressZip: joi.string()
-})
+// const schema = joi.object({
+//   firstName: joi.string().required(),
+//   lastName: joi.string().required(),
+//   registrantEmail: joi.string().email().required(),
+//   tournament: joi.string().required(),
+//   playerPhoneNumber: joi.string(),
+//   playerAddressStreet: joi.string().required(),
+//   playerAddressCity: joi.string().required(),
+//   playerAddressZip: joi.string().required(),
+//   usLacrosseNumber: joi.string().required(),
+//   playerPostion: joi.string().required(),
+//   teamSelection: joi.string().required(),
+//   graduationYear: joi.string().required(),
+//   expLevel: joi.string().required(),
+//   highSchool: joi.string().required(),
+//   parentFirstName: joi.string().required(),
+//   parentLastName: joi.string().required(),
+//   parentEmail: joi.string().email().required(),
+//   parentPhoneNumber: joi.string().required(),
+//   parentAddressStreet: joi.string(),
+//   parentAddressCity: joi.string(),
+//   parentAddressZip: joi.string()
+// })
 
 const sendRegistrationEmail = async (req) => {
   const msg = {
