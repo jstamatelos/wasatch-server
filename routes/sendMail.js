@@ -28,7 +28,7 @@ const schema = joi.object({
     parentFirstName: joi.string().required(),
     parentLastName: joi.string().required(),
     parentEmail: joi.string().email().required(),
-    parentPhoneNumber: joi.string().optional(),
+    parentPhoneNumber: joi.string().required(),
     parentAddressStreet: joi.string().optional(),
     parentAddressCity: joi.string().optional(),
     parentAddressZip: joi.string().optional()
@@ -39,7 +39,7 @@ const sendRegistrationEmail = async (req, res) => {
         await schema.validateAsync(req.body)
     } catch (error) {
         const { output } = boom.badData()
-        res.send(output)
+        return res.send(output)
     }
     const msg = {
         to: staff,
