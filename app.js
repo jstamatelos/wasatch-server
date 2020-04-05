@@ -15,14 +15,17 @@ app.get('/', function (req, res) {
 })
 
 app.post('/register', async (req, res) => {
+  console.log('REQUEST :::: ', req.body)
   req.log.info('register() :: attempting to create registration...')
   try {
     await sendRegistrationEmail(req)
     req.log.info('register() :: attempt to create registration was succesfull')
     res.send()
   } catch (error) {
-    req.log.error('register() :: error during registration attempt', error)
-    res.status(error.statusCode).send(error.output)
+    req.log.error('register() :: error during registration attempt', error.message)
+    req.log.error('register() :: error during registration attempt', error.details)
+
+    res.status(400).send()
   }
 })
 

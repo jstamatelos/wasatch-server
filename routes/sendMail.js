@@ -8,7 +8,7 @@ const staff = 'swdeveloper@jarrydstamatelos.com'
 // const staff2 = staff.split('|')[2]
 
 const joi = require('@hapi/joi')
-const boom = require('@hapi/boom')
+// const boom = require('@hapi/boom')
 
 const schema = joi.object({
   firstName: joi.string().required(),
@@ -35,26 +35,26 @@ const schema = joi.object({
 })
 
 const sendRegistrationEmail = async (req) => {
-  try {
-    const value = await schema.validateAsync(req.body)
-    if (!value) {
-      const msg = {
-        to: staff,
-        from: sender,
-        subject: subject,
-        html: buildBody(req)
-      }
-      try {
-        sendgrid.send(msg)
-      } catch (error) {
-        const { output } = boom.badData()
-        throw output
-      }
-    }
-  } catch (error) {
-    const { output } = boom.badData()
-    throw output
+  const msg = {
+    to: staff,
+    from: sender,
+    subject: subject,
+    html: buildBody(req)
   }
+  sendgrid.send(msg)
+//   const isValid = await schema.validateAsync(req.body)
+//   if (isValid) {
+//     const msg = {
+//       to: staff,
+//       from: sender,
+//       subject: subject,
+//       html: buildBody(req)
+//     }
+//     sendgrid.send(msg)
+//   } else {
+//     const { output } = boom.badData()
+//     throw output
+//   }
 }
 
 const buildBody = (req) => {
