@@ -49,6 +49,7 @@ const sendRegistrationEmail = async (req, res) => {
     }
     
     sendgrid.send(msg)
+    return res.status(200).send('Success')
 }
 
 const buildBody = (req) => {
