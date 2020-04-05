@@ -11,23 +11,21 @@ app.use(pino)
 app.use(cors())
 
 app.get('/', function (req, res) {
-    res.send(JSON.stringify({ Status: 'Running' }))
+  res.send(JSON.stringify({ Status: 'Running' }))
 })
 
 app.post('/register', async (req, res) => {
-    req.log.info('register() :: attempting to create registration...')
-    try {
-        req.log.info('register request: ', req.body)
-
-        await sendRegistrationEmail(req, res)
-        res.send('registration successfull posted')
-    } catch (error) {
-        req.log.error('register() :: error during registration attempt', error)
-        res.send(error)
-    }
+  req.log.info('register() :: attempting to create registration...')
+  try {
+    await sendRegistrationEmail(req)
     req.log.info('register() :: attempt to create registration was succesfull')
+    res.send()
+  } catch (error) {
+    req.log.error('register() :: error during registration attempt', error)
+    res.status(error.statusCode).send(error.output)
+  }
 })
 
 app.listen(port, function () {
-    console.log(`Up and running on port: ${port}`)
+  console.log(`Up and running on port: ${port}`)
 })
