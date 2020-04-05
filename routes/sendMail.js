@@ -39,7 +39,7 @@ const sendRegistrationEmail = async (req, res) => {
         await schema.validateAsync(req.body)
     } catch (error) {
         const { output } = boom.badData()
-        return res.send(output)
+        return res.status(output.statusCode).send(output.payload)
     }
     const msg = {
         to: staff,
@@ -55,20 +55,18 @@ const buildBody = (req) => {
     const { body } = req
     return `Player: ${body.firstName} ${body.lastName} \n` +
         `Player Email: ${body.registrantEmail} \n` +
-        `Player Email: ${body.registrantEmail} \n` +
         `Player Phone: ${body.playerPhoneNumber} \n` +
         `Tournamemt: ${body.tournamemt} \n` +
         `Player Address Street: ${body.playerAddressStreet} \n` +
         `Player Address City: ${body.playerAddressCity} \n` +
         `Player Address Zip: ${body.playerAddressZip} \n` +
         `Player US Lacrosse Number: ${body.usLacrosseNumber} \n` +
-        `Player Position: ${body.usLacrosseNumber} \n` +
+        `Player Position: ${body.playerPostion} \n` +
         `Player Team: ${body.teamSelection} \n` +
         `Player Grad Year: ${body.graduationYear} \n` +
         `Player Experiance Level: ${body.experianceLevel} \n` +
         `Player High School: ${body.highSchool} \n` +
-        `Parent First Name: ${body.parentFirstName} \n` +
-        `Parent Last Name: ${body.parentLastName} \n` +
+        `Parent Name: ${body.parentFirstName} ${body.parentLastName} \n` +
         `Parent Phone Number: ${body.parentPhoneNumber} \n` +
         `Parent Address Street: ${body.parentAddressStreet} \n` +
         `Parent Address City: ${body.parentAddressCity} \n` +
