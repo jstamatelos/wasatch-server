@@ -10,30 +10,6 @@ const staff = 'swdeveloper@jarrydstamatelos.com'
 // const joi = require('@hapi/joi')
 // // const boom = require('@hapi/boom')
 
-// const schema = joi.object({
-//   firstName: joi.string().required(),
-//   lastName: joi.string().required(),
-//   registrantEmail: joi.string().email().required(),
-//   tournament: joi.string().required(),
-//   playerPhoneNumber: joi.string(),
-//   playerAddressStreet: joi.string().required(),
-//   playerAddressCity: joi.string().required(),
-//   playerAddressZip: joi.string().required(),
-//   usLacrosseNumber: joi.string().required(),
-//   playerPostion: joi.string().required(),
-//   teamSelection: joi.string().required(),
-//   graduationYear: joi.string().required(),
-//   expLevel: joi.string().required(),
-//   highSchool: joi.string().required(),
-//   parentFirstName: joi.string().required(),
-//   parentLastName: joi.string().required(),
-//   parentEmail: joi.string().email().required(),
-//   parentPhoneNumber: joi.string().required(),
-//   parentAddressStreet: joi.string(),
-//   parentAddressCity: joi.string(),
-//   parentAddressZip: joi.string()
-// })
-
 const sendRegistrationEmail = async (req) => {
   const msg = {
     to: staff,
@@ -42,19 +18,6 @@ const sendRegistrationEmail = async (req) => {
     html: buildBody(req)
   }
   sendgrid.send(msg)
-//   const isValid = await schema.validateAsync(req.body)
-//   if (isValid) {
-//     const msg = {
-//       to: staff,
-//       from: sender,
-//       subject: subject,
-//       html: buildBody(req)
-//     }
-//     sendgrid.send(msg)
-//   } else {
-//     const { output } = boom.badData()
-//     throw output
-//   }
 }
 
 const buildBody = (req) => {
@@ -68,7 +31,6 @@ const buildBody = (req) => {
         `Player Address Zip: ${body.playerAddressZip} \n` +
         `Player US Lacrosse Number: ${body.usLacrosseNumber} \n` +
         `Player Position: ${body.playerPostion} \n` +
-        `Player Team: ${body.teamSelection} \n` +
         `Player Grad Year: ${body.graduationYear} \n` +
         `Player Experiance Level: ${body.expLevel} \n` +
         `Player High School: ${body.highSchool} \n` +

@@ -1,5 +1,6 @@
 const express = require('express')
 const cors = require('cors')
+const { isValid } = require('./routes/util')
 
 const port = process.env.PORT || 3000
 const pino = require('express-pino-logger')()
@@ -17,6 +18,7 @@ app.get('/', function (req, res) {
 app.post('/register', async (req, res) => {
   req.log.info('register() :: attempting to create registration...')
   try {
+    await isValid(req)
     await sendRegistrationEmail(req)
     req.log.info('register() :: attempt to create registration was succesfull')
     res.send()
