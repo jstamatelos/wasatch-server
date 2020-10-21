@@ -7,17 +7,21 @@ const staff = 'swdeveloper@jarrydstamatelos.com'
 // const staff1 = staff.split('|')[1]
 // const staff2 = staff.split('|')[2]
 
-// const joi = require('@hapi/joi')
-// // const boom = require('@hapi/boom')
-
 const sendRegistrationEmail = async (req) => {
-  const msg = {
-    to: staff,
-    from: sender,
-    subject: subject,
-    html: buildBody(req)
+  req.log.info('register() :: send email')
+
+  try {
+    const msg = {
+      to: staff,
+      from: sender,
+      subject: subject,
+      html: buildBody(req)
+    }
+    sendgrid.send(msg)
+  } catch (error) {
+    req.log.error('register() :: error during send ::', error)
   }
-  sendgrid.send(msg)
+
 }
 
 const buildBody = (req) => {
