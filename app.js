@@ -21,6 +21,8 @@ app.post('/register', async (req, res) => {
   try {
     await isValid(req)
     // await sendRegistrationEmail(req)
+    req.log.info(`Request: ${req.body}`)
+
     await saveUser(req.body)
     req.log.info('register() :: attempt to create registration was succesfull')
     res.send()
