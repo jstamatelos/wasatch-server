@@ -21,7 +21,6 @@ const sendRegistrationEmail = async (req) => {
   } catch (error) {
     req.log.error('register() :: error during send ::', error)
   }
-
 }
 
 const buildBody = (req) => {
