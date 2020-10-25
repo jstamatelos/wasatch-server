@@ -4,7 +4,8 @@ const { isValid } = require('./routes/util')
 
 const port = process.env.PORT || 3000
 const pino = require('express-pino-logger')()
-const { sendRegistrationEmail } = require('./routes/sendMail')
+const { saveUser } = require('./routes/saveUser')
+// const { sendRegistrationEmail } = require('./routes/sendMail')
 
 const app = express()
 app.use(express.json())
@@ -19,7 +20,8 @@ app.post('/register', async (req, res) => {
   req.log.info('register() :: attempting to create registration...')
   try {
     await isValid(req)
-    await sendRegistrationEmail(req)
+    // await sendRegistrationEmail(req)
+    await saveUser(req.body)
     req.log.info('register() :: attempt to create registration was succesfull')
     res.send()
   } catch (error) {
