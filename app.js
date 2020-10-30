@@ -10,7 +10,7 @@ const { saveUser } = require('./routes/saveUser')
 const app = express()
 app.use(express.json())
 app.use(pino)
-// app.use(cors())
+app.use(cors())
 const corsOptions = {
   origin: 'https://jstamatelos.github.io'
 }
