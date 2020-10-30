@@ -10,10 +10,8 @@ const { saveUser } = require('./routes/saveUser')
 const app = express()
 app.use(express.json())
 app.use(pino)
-const corsOptions = {
-  origin: 'https://jstamatelos.github.io'
-}
-app.use(cors(corsOptions))
+
+app.use(cors())
 
 app.get('/', function (req, res) {
   req.log.info('get () :: attempting to open connection to server...')
