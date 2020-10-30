@@ -11,7 +11,7 @@ const app = express()
 app.use(express.json())
 app.use(pino)
 const corsOptions = {
-  origin: 'https://jstamatelos.github.io/'
+  origin: 'https://jstamatelos.github.io'
 }
 app.use(cors(corsOptions))
 
